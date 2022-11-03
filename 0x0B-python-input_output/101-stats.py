@@ -1,29 +1,15 @@
 #!/usr/bin/python3
-"""
-This program take a file and read it, search a string
-and add other string on the next line
-"""
+import random
+import sys
+from time import sleep
+import datetime
 
-
-def append_after(filename="", search_string="", new_string=""):
-    """
-    Open and reads a file, search a string in all the file.
-    and after each ocurrence add other string (new_string)
-    Args:
-    - filename: string
-    - search_string: string
-    - new_string: string
-    """
-
-    with open(filename, mode="r+", encoding="utf-8") as _file:
-        all_text = _file.readlines()
-        new_text = ""
-
-        for line in all_text:
-            new_text += line
-            if (search_string in line):
-                new_text += new_string
-
-        # This method position the cursor to the beginning of the file
-        _file.seek(0)
-        _file.write(new_text)
+for i in range(10000):
+        sleep(random.random())
+        sys.stdout.write("{:d}.{:d}.{:d}.{:d} - [{}] \"GET /projects/260 HTTP/1.1\" {} {}\n".format(
+                random.randint(1, 255), random.randint(1, 255), random.randint(1, 255), random.randint(1, 255),
+                datetime.datetime.now(),
+                random.choice([200, 301, 400, 401, 403, 404, 405, 500]),
+                random.randint(1, 1024)
+                                                    ))
+        sys.stdout.flush()
